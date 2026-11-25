@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "paths": {
+      "scrollframes": [
+        "./src/core/index.ts"
+      ],
+      "scrollframes/react": [
+        "./src/react/index.tsx"
+      ],
+      "scrollframes/vue": [
+        "./src/vue/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "demo/src"
+  ]
+}
