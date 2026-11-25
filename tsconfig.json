@@ -27,6 +27,7 @@
     }
   },
   "include": [
+    "test",
     "src",
     "demo/src"
   ]

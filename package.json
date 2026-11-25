@@ -1,6 +1,6 @@
 {
   "name": "scrollframes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Scroll-scrubbed image sequences (\"video on scroll\") on a canvas. Framework-agnostic core with React and Vue components, plus a Python converter from video to frames.",
   "keywords": [
     "scroll",
@@ -61,14 +61,16 @@
   "files": [
     "dist",
     "converter/scrollframes_convert.py",
-    "converter/requirements.txt"
+    "converter/requirements.txt",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "demo": "vite demo",
     "demo:build": "vite build demo",
-    "prepublishOnly": "npm run typecheck && npm run build"
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "test": "vitest run"
   },
   "peerDependencies": {
     "react": ">=17",
@@ -91,6 +93,7 @@
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
+    "vitest": "^3.2.7",
     "vue": "^3.5.13"
   }
 }

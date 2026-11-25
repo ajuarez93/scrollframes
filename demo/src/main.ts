@@ -1,6 +1,6 @@
 import './demo.css'
 import { createScrollFrames } from 'scrollframes'
-import { FRAMES, panels } from './content'
+import { FRAMES, POSTER } from './content'
 
 // Library usage: you own the markup, scrollframes only drives the canvas.
 document.getElementById('app')!.innerHTML = `
@@ -18,6 +18,8 @@ createScrollFrames({
   container: document.getElementById('player')!,
   canvas: document.getElementById('canvas') as HTMLCanvasElement,
   source: { manifest: FRAMES },
+  poster: POSTER,
+  smoothing: 0.8,
   onLoadProgress: (l, t) => { if (l < t) hud.textContent = `loading ${l}/${t}` },
   onFrame: (i, p) => { hud.textContent = `frame ${i + 1} · ${(p * 100).toFixed(0)}%` },
 })

@@ -15,3 +15,4 @@ code { background: #ffffff14; padding: .1em .35em; border-radius: 4px; color: va
 .panel:nth-child(even) { justify-content: flex-end; }
 .hud { position: absolute; right: 1.5rem; bottom: 1.5rem; font: 12px/1 ui-monospace, monospace; color: var(--fg); opacity: .8; }
 .credit { padding: 2rem 1.5rem; text-align: center; font-size: .8rem; color: var(--muted); border-top: 1px solid #ffffff14; }
+.bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--accent); transform-origin: left; }

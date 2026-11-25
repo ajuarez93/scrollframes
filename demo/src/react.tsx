@@ -2,7 +2,7 @@ import './demo.css'
 import { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ScrollFrames } from 'scrollframes/react'
-import { FRAMES, panels } from './content'
+import { FRAMES, POSTER, panels } from './content'
 
 function App() {
   const [hud, setHud] = useState('loading…')
@@ -11,7 +11,10 @@ function App() {
       <section className="intro"><h1>scrollframes</h1><p>React — <code>&lt;ScrollFrames /&gt;</code>. Scroll down.</p></section>
       <ScrollFrames
         manifest={FRAMES}
+        poster={POSTER}
+        smoothing={0.8}
         overlay={<div className="hud">{hud}</div>}
+        renderOverlay={({ progress }) => <div className="bar" style={{ transform: `scaleX(${progress})` }} />}
         onFrame={(i, p) => setHud(`frame ${i + 1} · ${(p * 100).toFixed(0)}%`)}
       >
         {panels.map(([title, text]) => (

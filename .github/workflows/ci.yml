@@ -14,9 +14,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
+      - run: npm test
       - run: npm run build
       - run: npm run demo:build
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m py_compile converter/scrollframes_convert.py
+      - name: Converter smoke test
+        run: |
+          pip install -r converter/requirements.txt 'pillow>=11.3'
+          ffmpeg -loglevel error -f lavfi -i testsrc=size=640x360:rate=24 -t 1 -pix_fmt yuv420p /tmp/t.mp4
+          python converter/scrollframes_convert.py /tmp/t.mp4 -o /tmp/out --widths 320,640 --format avif
+          python -c "import json;m=json.load(open('/tmp/out/manifest.json'));assert m['version']==2 and len(m['variants'])==2 and m['frameCount']==24, m"
